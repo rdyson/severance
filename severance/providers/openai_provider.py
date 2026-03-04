@@ -135,9 +135,16 @@ class OpenAIProvider(BaseProvider):
                 for result in bucket.get("results", []):
                     amount = result.get("amount", {})
                     if isinstance(amount, dict):
-                        cost = amount.get("value", 0)
+                        raw_cost = amount.get("value", 0)
                     else:
-                        cost = amount or 0
+                        raw_cost = amount or 0
+                    try:
+                        cost = float(raw_cost)
+                    except (TypeError, ValueError):
+                        logger.warning(
+                            "OpenAI costs payload had non-numeric amount: %r", raw_cost
+                        )
+                        cost = 0.0
                     daily_costs[date_key] = daily_costs.get(date_key, 0) + cost
 
             # Distribute official daily cost totals across model records by date.

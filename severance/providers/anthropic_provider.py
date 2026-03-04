@@ -28,6 +28,23 @@ class AnthropicProvider(BaseProvider):
     def __init__(self, config: ProviderConfig):
         self.api_key = config.admin_api_key
 
+    @staticmethod
+    def _normalize_bucket_timestamp(bucket: dict) -> str:
+        """Return a normalized UTC timestamp string for a usage bucket."""
+        raw = (
+            bucket.get("start_time")
+            or bucket.get("starting_at")
+            or bucket.get("bucket_start")
+            or ""
+        )
+        if not raw:
+            return ""
+        try:
+            ts = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+            return ts.strftime("%Y-%m-%dT%H:%M:%SZ")
+        except ValueError:
+            return str(raw)
+
     async def is_configured(self) -> bool:
         return bool(self.api_key and self.api_key.startswith("sk-ant-admin"))
 
@@ -68,7 +85,10 @@ class AnthropicProvider(BaseProvider):
                 return []
 
         for bucket in data.get("data", []):
-            bucket_ts = bucket.get("start_time", "")
+            bucket_ts = self._normalize_bucket_timestamp(bucket)
+            if not bucket_ts:
+                logger.warning("Anthropic bucket missing timestamp: %r", bucket)
+                continue
             for result in bucket.get("results", []):
                 model = result.get("model")
                 input_tokens = result.get("input_tokens", 0)
