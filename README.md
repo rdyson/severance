@@ -4,11 +4,11 @@
 
 A locally-hosted dashboard for monitoring AI API token spend across providers. See what your AI habit actually costs — broken down by provider, model, and day.
 
-Built for personal use. No telemetry, no cloud, no accounts. Your data stays on your machine.
+Built for personal use. No telemetry, no cloud, no accounts.
 
 ## Features
 
-- **Multi-provider** — Anthropic + OpenAI out of the box, Google planned
+- **Multi-provider** — Anthropic + OpenAI out of the box, Google planned (not easy yet)
 - **Dashboard** — Dark-themed UI with charts and tables, no build step
 - **Timeline view** — Daily spend stacked by provider or model
 - **Model breakdown** — Per-model token counts, request volumes, and costs
@@ -44,8 +44,6 @@ You need **Admin API keys** — these are different from regular API keys:
 |---|---|---|
 | **Anthropic** | [console.anthropic.com → Settings → Admin Keys](https://console.anthropic.com/settings/admin-keys) | `sk-ant-admin-...` |
 | **OpenAI** | [platform.openai.com → Settings → Organization → Admin Keys](https://platform.openai.com/settings/organization/admin-keys) | `sk-admin-...` |
-
-Both are free to create. They provide read-only access to your usage data.
 
 ## Configuration
 
