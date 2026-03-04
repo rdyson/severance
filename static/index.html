@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Severance 💀</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>💀 Severance</h1>
+            <span class="tagline">Track what you pay the things replacing you</span>
+        </div>
+        <div class="header-right">
+            <div class="range-picker">
+                <button class="range-btn" data-range="7d">7d</button>
+                <button class="range-btn" data-range="14d">14d</button>
+                <button class="range-btn active" data-range="30d">30d</button>
+                <button class="range-btn" data-range="mtd">MTD</button>
+                <button class="range-btn" data-range="last-month">Last Month</button>
+                <div class="custom-range">
+                    <input type="date" id="custom-start">
+                    <span>→</span>
+                    <input type="date" id="custom-end">
+                    <button class="range-btn" id="custom-go">Go</button>
+                </div>
+            </div>
+            <button class="refresh-btn" id="refresh-btn" title="Refresh data from providers">⟳</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Summary Cards -->
+        <section class="cards">
+            <div class="card summary-card" id="card-total">
+                <div class="card-label">Total Spend</div>
+                <div class="card-value" id="total-cost">—</div>
+                <div class="card-delta" id="total-delta"></div>
+            </div>
+            <div class="card summary-card" id="card-tokens">
+                <div class="card-label">Total Tokens</div>
+                <div class="card-value" id="total-tokens">—</div>
+                <div class="card-sub" id="token-breakdown"></div>
+            </div>
+            <div class="card summary-card" id="card-requests">
+                <div class="card-label">Requests</div>
+                <div class="card-value" id="total-requests">—</div>
+            </div>
+            <div class="card summary-card" id="card-models">
+                <div class="card-label">Models Used</div>
+                <div class="card-value" id="total-models">—</div>
+                <div class="card-sub" id="provider-count"></div>
+            </div>
+        </section>
+
+        <!-- Timeline Chart -->
+        <section class="chart-section">
+            <div class="chart-header">
+                <h2>Daily Spend</h2>
+                <div class="chart-controls">
+                    <button class="toggle-btn active" data-group="provider">By Provider</button>
+                    <button class="toggle-btn" data-group="model">By Model</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="timeline-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Provider Breakdown + Model Table -->
+        <section class="bottom-section">
+            <div class="chart-section half">
+                <h2>Provider Breakdown</h2>
+                <div class="chart-container pie-container">
+                    <canvas id="provider-chart"></canvas>
+                </div>
+            </div>
+            <div class="table-section half">
+                <h2>Model Breakdown</h2>
+                <div class="table-wrap">
+                    <table id="model-table">
+                        <thead>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Model</th>
+                                <th class="num">Input</th>
+                                <th class="num">Output</th>
+                                <th class="num">Cached</th>
+                                <th class="num">Requests</th>
+                                <th class="num">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody id="model-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Severance v0.1.0</span>
+        <span class="last-refresh" id="last-refresh"></span>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

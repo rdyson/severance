@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "severance"
+version = "0.1.0"
+description = "Track what you pay the things replacing you."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Rob Dyson" }]
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "httpx>=0.28",
+    "pyyaml>=6.0",
+    "apscheduler>=3.10,<4",
+]
+
+[project.scripts]
+severance = "severance.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/rdyson/severance"
