@@ -1,1 +1,9 @@
-PLAN.md
+config.yaml
+*.db
+__pycache__/
+*.pyc
+.venv/
+dist/
+*.egg-info/
+.pycache_tmp/
+.DS_Store

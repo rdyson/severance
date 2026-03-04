@@ -1,0 +1,210 @@
+[
+  {
+    "provider": "anthropic",
+    "model": "claude-opus-4-6",
+    "input_per_mtok": 5.0,
+    "output_per_mtok": 25.0,
+    "cached_per_mtok": 0.50,
+    "effective_from": "2026-02-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-opus-4-5",
+    "input_per_mtok": 5.0,
+    "output_per_mtok": 25.0,
+    "cached_per_mtok": 0.50,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-opus-4-1",
+    "input_per_mtok": 15.0,
+    "output_per_mtok": 75.0,
+    "cached_per_mtok": 1.50,
+    "effective_from": "2025-03-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-opus-4",
+    "input_per_mtok": 15.0,
+    "output_per_mtok": 75.0,
+    "cached_per_mtok": 1.50,
+    "effective_from": "2025-01-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6",
+    "input_per_mtok": 3.0,
+    "output_per_mtok": 15.0,
+    "cached_per_mtok": 0.30,
+    "effective_from": "2026-02-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-5",
+    "input_per_mtok": 3.0,
+    "output_per_mtok": 15.0,
+    "cached_per_mtok": 0.30,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4",
+    "input_per_mtok": 3.0,
+    "output_per_mtok": 15.0,
+    "cached_per_mtok": 0.30,
+    "effective_from": "2025-01-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-haiku-4-5",
+    "input_per_mtok": 1.0,
+    "output_per_mtok": 5.0,
+    "cached_per_mtok": 0.10,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-haiku-3-5",
+    "input_per_mtok": 0.80,
+    "output_per_mtok": 4.0,
+    "cached_per_mtok": 0.08,
+    "effective_from": "2024-06-01"
+  },
+  {
+    "provider": "anthropic",
+    "model": "claude-haiku-3",
+    "input_per_mtok": 0.25,
+    "output_per_mtok": 1.25,
+    "cached_per_mtok": 0.03,
+    "effective_from": "2024-01-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5.2-pro",
+    "input_per_mtok": 21.0,
+    "output_per_mtok": 168.0,
+    "cached_per_mtok": 2.10,
+    "effective_from": "2026-02-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5.2",
+    "input_per_mtok": 1.75,
+    "output_per_mtok": 14.0,
+    "cached_per_mtok": 0.175,
+    "effective_from": "2026-02-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5.1",
+    "input_per_mtok": 1.25,
+    "output_per_mtok": 10.0,
+    "cached_per_mtok": 0.125,
+    "effective_from": "2025-09-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5",
+    "input_per_mtok": 1.25,
+    "output_per_mtok": 10.0,
+    "cached_per_mtok": 0.125,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5-mini",
+    "input_per_mtok": 0.25,
+    "output_per_mtok": 2.0,
+    "cached_per_mtok": 0.025,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-5-nano",
+    "input_per_mtok": 0.05,
+    "output_per_mtok": 0.40,
+    "cached_per_mtok": 0.005,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "openai",
+    "model": "o3-pro",
+    "input_per_mtok": 20.0,
+    "output_per_mtok": 80.0,
+    "cached_per_mtok": null,
+    "effective_from": "2025-09-01"
+  },
+  {
+    "provider": "openai",
+    "model": "o3",
+    "input_per_mtok": 2.0,
+    "output_per_mtok": 8.0,
+    "cached_per_mtok": 1.0,
+    "effective_from": "2025-06-01"
+  },
+  {
+    "provider": "openai",
+    "model": "o4-mini",
+    "input_per_mtok": 1.10,
+    "output_per_mtok": 4.40,
+    "cached_per_mtok": 0.275,
+    "effective_from": "2025-09-01"
+  },
+  {
+    "provider": "openai",
+    "model": "o3-mini",
+    "input_per_mtok": 1.10,
+    "output_per_mtok": 4.40,
+    "cached_per_mtok": 0.275,
+    "effective_from": "2025-01-01"
+  },
+  {
+    "provider": "openai",
+    "model": "o1",
+    "input_per_mtok": 15.0,
+    "output_per_mtok": 60.0,
+    "cached_per_mtok": 7.50,
+    "effective_from": "2024-09-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4.1",
+    "input_per_mtok": 2.0,
+    "output_per_mtok": 8.0,
+    "cached_per_mtok": 0.20,
+    "effective_from": "2025-04-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4.1-mini",
+    "input_per_mtok": 0.40,
+    "output_per_mtok": 1.60,
+    "cached_per_mtok": 0.04,
+    "effective_from": "2025-04-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4.1-nano",
+    "input_per_mtok": 0.10,
+    "output_per_mtok": 0.40,
+    "cached_per_mtok": 0.01,
+    "effective_from": "2025-04-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "input_per_mtok": 2.50,
+    "output_per_mtok": 10.0,
+    "cached_per_mtok": 1.25,
+    "effective_from": "2024-05-01"
+  },
+  {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "input_per_mtok": 0.15,
+    "output_per_mtok": 0.60,
+    "cached_per_mtok": 0.075,
+    "effective_from": "2024-07-01"
+  }
+]
