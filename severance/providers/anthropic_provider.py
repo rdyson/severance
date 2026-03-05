@@ -45,6 +45,13 @@ class AnthropicProvider(BaseProvider):
         except ValueError:
             return str(raw)
 
+    @staticmethod
+    def _to_int(value: object) -> int:
+        try:
+            return int(value or 0)
+        except (TypeError, ValueError):
+            return 0
+
     async def is_configured(self) -> bool:
         return bool(self.api_key and self.api_key.startswith("sk-ant-admin"))
 
@@ -91,10 +98,23 @@ class AnthropicProvider(BaseProvider):
                 continue
             for result in bucket.get("results", []):
                 model = result.get("model")
-                input_tokens = result.get("input_tokens", 0)
-                output_tokens = result.get("output_tokens", 0)
-                cached_read = result.get("input_cached_tokens", 0)
-                cache_creation = result.get("cache_creation_tokens", 0)
+                # Anthropic Usage API uses uncached/cache fields rather than a single
+                # "input_tokens" value.
+                input_tokens = self._to_int(result.get("uncached_input_tokens"))
+                output_tokens = self._to_int(result.get("output_tokens"))
+                cached_read = self._to_int(result.get("cache_read_input_tokens"))
+
+                cache_creation_raw = result.get("cache_creation")
+                if isinstance(cache_creation_raw, dict):
+                    cache_creation = sum(
+                        self._to_int(v) for v in cache_creation_raw.values()
+                    )
+                else:
+                    cache_creation = self._to_int(
+                        result.get("cache_creation_input_tokens")
+                        or result.get("cache_creation_tokens")
+                        or cache_creation_raw
+                    )
 
                 records.append(
                     UsageRecord(
@@ -105,7 +125,11 @@ class AnthropicProvider(BaseProvider):
                         input_tokens=input_tokens,
                         output_tokens=output_tokens,
                         cached_tokens=cached_read + cache_creation,
-                        requests=result.get("num_requests", 0),
+                        requests=self._to_int(
+                            result.get("num_requests")
+                            or result.get("request_count")
+                            or result.get("requests")
+                        ),
                         cost_usd=None,  # Calculated later from pricing
                         raw=result,
                     )

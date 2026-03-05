@@ -96,12 +96,15 @@ async function loadSummary() {
         const data = await api('/api/summary', currentRange);
         const c = data.current || {};
         const p = data.previous || {};
+        const input = c.total_input_tokens || 0;
+        const output = c.total_output_tokens || 0;
+        const cached = c.total_cached_tokens || 0;
 
         document.getElementById('total-cost').textContent = fmt(c.total_cost_usd);
         document.getElementById('total-tokens').textContent =
-            fmtTokens((c.total_input_tokens || 0) + (c.total_output_tokens || 0));
+            fmtTokens(input + output + cached);
         document.getElementById('token-breakdown').textContent =
-            `${fmtTokens(c.total_input_tokens)} in · ${fmtTokens(c.total_output_tokens)} out`;
+            `${fmtTokens(input)} uncached in · ${fmtTokens(cached)} cached in · ${fmtTokens(output)} out`;
         document.getElementById('total-requests').textContent = fmtNum(c.total_requests);
         document.getElementById('total-models').textContent = fmtNum(c.model_count);
         document.getElementById('provider-count').textContent =
