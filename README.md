@@ -6,6 +6,9 @@ A locally-hosted dashboard for monitoring AI API token spend across providers. S
 
 Built for personal use. No telemetry, no cloud, no accounts.
 
+> [!WARNING]
+>  Not really working yet. WIP!
+
 ## Features
 
 - **Multi-provider** — Anthropic + OpenAI out of the box, Google planned (not easy yet)
